@@ -1,0 +1,20 @@
+{
+  "name": "w1575/test-parser",
+  "description": "Выполнение тестового задания",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "w",
+      "email": "vv1575@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "app\\": "src/"
+    }
+  },
+  "require": {
+    "w1575/console-color": "^1.0"
+  }
+}
