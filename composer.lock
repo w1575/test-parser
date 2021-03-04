@@ -1,0 +1,56 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "5aff96b013e57c1f3e7844b79bbc8b41",
+    "packages": [
+        {
+            "name": "w1575/console-color",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/w1575/ConsoleColor.git",
+                "reference": "ef16efe79bd6ce4fefc810ffddd928e84c8f6d67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/w1575/ConsoleColor/zipball/ef16efe79bd6ce4fefc810ffddd928e84c8f6d67",
+                "reference": "ef16efe79bd6ce4fefc810ffddd928e84c8f6d67",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "w1575\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "w1575",
+                    "email": "w1575@ya.ru"
+                }
+            ],
+            "description": "Console with color themes :)",
+            "support": {
+                "issues": "https://github.com/w1575/ConsoleColor/issues",
+                "source": "https://github.com/w1575/ConsoleColor/tree/1.0.4"
+            },
+            "time": "2020-01-19T20:50:04+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}
