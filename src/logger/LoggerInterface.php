@@ -36,14 +36,5 @@ interface LoggerInterface
      */
     public function writeError(string $message):void;
 
-    /**
-     * Записывает время начала
-     */
-    public function writeStartTime():void;
-
-    /**
-     * Записывает время конца
-     */
-    public function writeEndTime():void;
 
 }

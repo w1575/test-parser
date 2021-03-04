@@ -8,16 +8,79 @@ use w1575\ConsoleColor;
 class ConsoleLogger implements LoggerInterface
 {
     /**
-     * @var ConsoleColor
+     * @var ConsoleColor объект вспомогательного класса для вывода сообщений
      */
-    private $console;
+    private ConsoleColor $console;
+
+    /**
+     * @var int время начала выполнения
+     */
+    private int $startTime;
+
+    /**
+     * @var int дата завершения
+     */
+    private int $endTime;
+
+    /**
+     * Формат даты
+     * @var string
+     */
+    private string $timeFormat = 'd.m.Y h:i:s';
 
     /**
      * ConsoleLogger constructor.
+     * @param mixed ...$params
      */
-    public function __construct()
+    public function __construct(...$params)
     {
-        $this->console = new ConsoleColor('invert');
+        $consoleTheme = $params['consoleTheme'] ?? 'invert';
+        $this->console = new ConsoleColor($consoleTheme);
+        $this->timeFormat = $params['timeFormat'] ?? $this->timeFormat;
+
+    }
+
+    /**
+     * Устанавливает время старта логирования
+     */
+    public function setStartTime():void
+    {
+        $this->startTime = time();
+    }
+
+    /**
+     * устанавливает время завершения логирования
+     */
+    public function setEndTime():void
+    {
+        $this->endTime = time();
+    }
+
+    /**
+     * Возвращает отформатированное время старта скрипта
+     * @return string
+     */
+    public function getStartTime():string
+    {
+        return date($this->timeFormat, $this->startTime);
+    }
+
+    /**
+     * Возвращает отформатированное время завершения
+     * @return string
+     */
+    public function getEndTime():string
+    {
+        return date($this->timeFormat, $this->endTime);
+    }
+
+    /**
+     * Возвращает отформатированное время выполнения
+     * @return string
+     */
+    public function getExecutionTime():string
+    {
+        return date($this->timeFormat, $this->startTime - $this->endTime);
     }
 
     /**
@@ -25,28 +88,16 @@ class ConsoleLogger implements LoggerInterface
      */
     public function writeLog(string $message): void
     {
-
+        echo "{$message} \n";
     }
 
-    public function writeEndTime(): void
-    {
-        // TODO: Implement writeEndTime() method.
-    }
-
-    /**
-     * @see LoggerInterface
-     */
-    public function writeStartTime(): void
-    {
-        // TODO: Implement writeStartTime() method.
-    }
 
     /**
      * @param string $message
      */
     public function writeError(string $message): void
     {
-        // TODO: Implement writeError() method.
+        $this->console->danger($message);
     }
 
     /**
@@ -54,7 +105,7 @@ class ConsoleLogger implements LoggerInterface
      */
     public function writeInfo(string $message): void
     {
-        // TODO: Implement writeInfo() method.
+        $this->console->info($message);
     }
 
     /**
@@ -62,6 +113,6 @@ class ConsoleLogger implements LoggerInterface
      */
     public function writeWarning(string $message):void
     {
-
+        $this->console->warning($message);
     }
 }
