@@ -11,10 +11,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "app\\": "src/"
+      "App\\": "src/"
     }
   },
   "require": {
-    "w1575/console-color": "^1.0"
+    "w1575/console-color": "^1.0",
+    "ext-mbstring": "*",
+    "ext-json": "*"
   }
 }

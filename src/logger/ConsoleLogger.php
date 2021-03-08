@@ -26,7 +26,7 @@ class ConsoleLogger implements LoggerInterface
      * Формат даты
      * @var string
      */
-    private string $timeFormat = 'd.m.Y h:i:s';
+    private string $timeFormat = 'h:i:s';
 
     /**
      * ConsoleLogger constructor.
@@ -80,7 +80,8 @@ class ConsoleLogger implements LoggerInterface
      */
     public function getExecutionTime():string
     {
-        return date($this->timeFormat, $this->startTime - $this->endTime);
+        $seconds = $this->endTime - $this->startTime;
+        return sprintf('%02d:%02d:%02d', ($seconds/ 3600),($seconds/ 60 % 60), $seconds% 60);
     }
 
     /**
@@ -97,7 +98,7 @@ class ConsoleLogger implements LoggerInterface
      */
     public function writeError(string $message): void
     {
-        $this->console->danger($message);
+        $this->writeLogString($message, 'danger');
     }
 
     /**
@@ -105,7 +106,7 @@ class ConsoleLogger implements LoggerInterface
      */
     public function writeInfo(string $message): void
     {
-        $this->console->info($message);
+        $this->writeLogString($message, 'info');
     }
 
     /**
@@ -113,6 +114,18 @@ class ConsoleLogger implements LoggerInterface
      */
     public function writeWarning(string $message):void
     {
-        $this->console->warning($message);
+        $this->writeLogString($message, 'warning');
     }
+
+    /**
+     * @param $message
+     * @param $type
+     */
+    private function writeLogString($message, $type):void
+    {
+        $time = date($this->timeFormat, time());
+        $formattedMessage = "{$time}: {$message}";
+        $this->console->{$type}($formattedMessage);
+    }
+
 }

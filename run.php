@@ -6,5 +6,17 @@ use App\Parser;
 
 $filesDir = __DIR__ . "/files";
 
-$parser = new Parser($filesDir);
+function pred($data)
+{
+    var_dump($data);
+    die('На этом всё');
+}
+
+try {
+    $parser = new Parser($filesDir);
+} catch (\Exception $e) {
+    echo $e->getMessage() . PHP_EOL;
+    return false;
+}
+
 $parser->start();
