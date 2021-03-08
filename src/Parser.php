@@ -175,9 +175,7 @@ class Parser
      */
     private function parseExternalIds():void
     {
-
         foreach ($this->sourceData as $code => $orderNumber) {
-            $this->logger->writeInfo($code);
             foreach ($this->externalIdsFileNames as $index => $fileName) {
                 $fileContent = file_get_contents($this->getFullPathToLogFile($fileName));
                 $fileContent = json_decode($fileContent, true);

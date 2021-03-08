@@ -124,7 +124,7 @@ class ConsoleLogger implements LoggerInterface
     private function writeLogString($message, $type):void
     {
         $time = date($this->timeFormat, time());
-        $formattedMessage = "{$time}: {$message}";
+        $formattedMessage = "{$time} - {$message}";
         $this->console->{$type}($formattedMessage);
     }
 
